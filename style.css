@@ -71,80 +71,64 @@ body, html {
 /* --- Main Layout Architecture --- */
 #main-content { display: none; opacity: 0; transition: opacity 1.2s ease-in-out; }
 .particles { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 2; }
+#fireworks-container { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 18000; }
 section { min-height: 100vh; display: flex; align-items: center; position: relative; z-index: 3; padding: 60px 8%; }
 
-/* --- Pure CSS 3D Floating Wave Diamond Heart --- */
-.cake-container {
+/* --- Interactive Pop-up Proposal Overlay UI --- */
+#ring-popup-overlay {
     position: fixed;
-    top: 25%;
-    right: 12%;
-    width: 120px;
-    height: 120px;
-    perspective: 800px;
-    z-index: 10;
-    pointer-events: none;
-    transition: all 0.2s ease-out;
-}
-
-.diamond-heart-3d {
-    width: 100%;
-    height: 100%;
-    position: relative;
-    transform-style: preserve-3d;
-    transform: rotateX(-20deg) rotateY(45deg);
-    animation: spinHeart 6s linear infinite;
-}
-
-.heart-face {
-    position: absolute;
-    width: 80px;
-    height: 80px;
-    background: linear-gradient(135deg, #ff3366, #ff758c);
-    box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.4);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-/* Constructing 3D geometry using matrix translations */
-.front-left {
-    transform: rotateY(0deg) translateZ(40px) rotate(45deg);
-    border-radius: 50% 0 0 50%;
-}
-.front-right {
-    transform: rotateY(90deg) translateZ(40px) rotate(45deg);
-    border-radius: 50% 50% 0 0;
-}
-.back-left {
-    transform: rotateY(180deg) translateZ(40px) rotate(45deg);
-    border-radius: 0 50% 50% 0;
-}
-.back-right {
-    transform: rotateY(270deg) translateZ(40px) rotate(45deg);
-    border-radius: 0 0 50% 50%;
-}
-
-/* --- Birthday Wish Video Frame UI --- */
-.video-section {
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(5, 2, 10, 0.96);
+    z-index: 20000;
+    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 100%;
+    backdrop-filter: blur(15px);
+    transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-.video-wrapper {
-    width: 100%;
-    max-width: 800px;
-    aspect-ratio: 16 / 9;
-    background: rgba(0,0,0,0.5);
-    border-radius: 20px;
-    overflow: hidden;
-    box-shadow: 0 25px 50px rgba(255, 77, 121, 0.25);
-    border: 2px solid rgba(255, 77, 121, 0.4);
-}
+.popup-overlay-hidden { opacity: 0; pointer-events: none; transform: scale(1.1); }
+.popup-3d-scene { width: 300px; height: 300px; perspective: 1000px; display: flex; justify-content: center; align-items: center; }
+.popup-ring-box-3d { width: 150px; height: 120px; position: relative; transform-style: preserve-3d; transform: rotateX(-20deg) rotateY(0deg); transition: transform 0.5s ease-out; }
+.popup-box-lid { position: absolute; width: 150px; height: 150px; top: 40px; transform-style: preserve-3d; transform-origin: top center; transform: rotateX(-110deg) translateY(-150px); transition: transform 1.2s cubic-bezier(0.25, 1, 0.5, 1); }
+.popup-ring-box-3d.open #popup-box-lid { transform: rotateX(-200deg) translateY(-150px); }
+.popup-magic-ring { position: absolute; font-size: 4.5rem; left: 40px; top: 0px; transform: translateZ(0px); text-shadow: 0 0 25px rgba(255, 215, 0, 0.9); opacity: 0; transition: all 1.5s cubic-bezier(0.25, 1, 0.5, 1); }
+.popup-ring-box-3d.open #popup-ring { transform: translateY(-50px) translateZ(20px) scale(1.1); opacity: 1; animation: ringFloat 2.5s ease-in-out infinite alternate; }
+.popup-controls { text-align: center; max-width: 600px; padding: 20px; margin-top: 20px; }
+.proposal-heading { font-size: 1.8rem; color: #ff4d79; margin-bottom: 30px; text-shadow: 0 0 10px rgba(255,77,121,0.4); animation: float 3s infinite alternate; }
 
-.video-wrapper iframe {
-    width: 100%;
-    height: 100%;
+.yes-btn {
+    background: linear-gradient(135deg, #ffd700, #ffa500);
+    color: #0a0512; border: none; padding: 15px 40px; font-size: 1.3rem; font-weight: bold; border-radius: 40px; cursor: pointer;
+    box-shadow: 0 10px 30px rgba(255, 215, 0, 0.4); transition: all 0.3s;
 }
+.yes-btn:hover { transform: scale(1.1); box-shadow: 0 15px 40px rgba(255, 215, 0, 0.6); }
+.click-hint-text { position: absolute; bottom: -25px; font-size: 0.85rem; color: #ffd700; letter-spacing: 2px; text-transform: uppercase; animation: heartbeat 1.5s infinite; }
+
+/* --- 3D Floating Wave Diamond Heart --- */
+.cake-container { position: fixed; top: 25%; right: 12%; width: 120px; height: 120px; perspective: 800px; z-index: 10; pointer-events: none; transition: all 0.2s ease-out; }
+.diamond-heart-3d { width: 100%; height: 100%; position: relative; transform-style: preserve-3d; transform: rotateX(-20deg) rotateY(45deg); animation: spinHeart 6s linear infinite; }
+.heart-face { position: absolute; width: 80px; height: 80px; background: linear-gradient(135deg, #ff3366, #ff758c); box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.4); border: 1px solid rgba(255, 255, 255, 0.2); }
+.front-left { transform: rotateY(0deg) translateZ(40px) rotate(45deg); border-radius: 50% 0 0 50%; }
+.front-right { transform: rotateY(90deg) translateZ(40px) rotate(45deg); border-radius: 50% 50% 0 0; }
+.back-left { transform: rotateY(180deg) translateZ(40px) rotate(45deg); border-radius: 0 50% 50% 0; }
+.back-right { transform: rotateY(270deg) translateZ(40px) rotate(45deg); border-radius: 0 0 50% 50%; }
+
+/* --- Video Presenter Styles --- */
+.video-section, .local-videos-section { flex-direction: column; justify-content: center; align-items: center; width: 100%; }
+.video-wrapper { position: relative; width: 100%; max-width: 800px; aspect-ratio: 16 / 9; background: rgba(0,0,0,0.6); border-radius: 20px; overflow: hidden; box-shadow: 0 25px 50px rgba(255, 77, 121, 0.25); border: 2px solid rgba(255, 77, 121, 0.4); }
+.video-wrapper iframe { width: 100%; height: 100%; pointer-events: none; }
+.custom-video-btn { position: absolute; bottom: 20px; left: 20px; background: rgba(10, 5, 18, 0.75); color: #fff; border: 1px solid #ff4d79; padding: 8px 16px; border-radius: 20px; cursor: pointer; font-size: 0.9rem; font-weight: bold; backdrop-filter: blur(5px); transition: all 0.3s; z-index: 15; }
+.custom-video-btn:hover { background: #ff4d79; color: #fff; transform: scale(1.05); }
+
+/* Local Videos Grid Architecture */
+.video-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 30px; width: 100%; max-width: 1100px; margin-top: 20px; }
+.local-video-card { position: relative; background: rgba(0,0,0,0.4); border-radius: 16px; overflow: hidden; border: 1px solid rgba(255, 77, 121, 0.2); box-shadow: 0 15px 30px rgba(0,0,0,0.3); aspect-ratio: 4 / 3; }
+.local-video-card video { width: 100%; height: 100%; object-fit: cover; }
 
 /* --- Typography & Wish Styling --- */
 .hero-section { flex-direction: column; justify-content: center; text-align: center; }
@@ -152,12 +136,12 @@ section { min-height: 100vh; display: flex; align-items: center; position: relat
 .bday-date { font-size: 2.4rem; color: #ffd700; letter-spacing: 6px; font-weight: 700; }
 .sub-text { margin-top: 20px; color: #ffb3c6; font-size: 1.1rem; }
 
-/* --- Section 2: Infinite Auto Slider --- */
+/* --- Section 2: Fixed Dynamic Image Slider --- */
 .slider-section { flex-direction: column; justify-content: center; overflow: hidden; }
 .section-title { font-size: 2.5rem; color: #ff4d79; margin-bottom: 40px; text-align: center; }
-.slider-container { width: 100%; max-width: 1100px; display: flex; overflow: hidden; background: rgba(255, 255, 255, 0.02); padding: 20px; border-radius: 20px; backdrop-filter: blur(5px); border: 1px solid rgba(255,255,255,0.05); }
-.image-track { display: flex; gap: 20px; animation: scrollTrack 35s linear infinite; width: max-content; }
-.slider-card { width: 220px; height: 300px; border-radius: 12px; overflow: hidden; flex-shrink: 0; box-shadow: 0 10px 20px rgba(0,0,0,0.3); border: 2px solid rgba(255, 77, 121, 0.3); }
+.slider-container { width: 100%; max-width: 900px; display: flex; overflow: hidden; background: rgba(255, 255, 255, 0.02); padding: 15px; border-radius: 20px; backdrop-filter: blur(5px); border: 1px solid rgba(255,255,255,0.05); }
+.image-track { display: flex; gap: 15px; animation: scrollTrack 35s linear infinite; width: max-content; }
+.slider-card { width: 160px; height: 220px; border-radius: 10px; overflow: hidden; flex-shrink: 0; box-shadow: 0 8px 16px rgba(0,0,0,0.4); border: 2px solid rgba(255, 77, 121, 0.25); }
 .slider-card img { width: 100%; height: 100%; object-fit: cover; }
 
 /* --- Section 3 Settings --- */
@@ -174,26 +158,143 @@ section { min-height: 100vh; display: flex; align-items: center; position: relat
 .photo-frame:hover { transform: rotate(0deg) scale(1.05) translateY(-5px); box-shadow: 0 25px 45px rgba(255,77,121,0.3); z-index: 10; }
 .photo-frame img { width: 100%; height: 250px; object-fit: cover; }
 
-/* --- Dynamic Scroll Reveal Engine Engine Classes --- */
-.scroll-fade-element { opacity: 0; transform: translateY(60px); transition: all 1s cubic-bezier(0.25, 1, 0.5, 1); }
-.scroll-fade-element.revealed { opacity: 1; transform: translateY(0); }
-
 /* --- Section 5 Counter --- */
-.counter-section { flex-direction: column; justify-content: center; text-align: center; }
+.counter-section { flex-direction: column; justify-content: center; text-align: center; min-height: 70vh; }
 .counter-title { color: #ff4d79; margin-bottom: 40px; font-size: 1.8rem; }
 .counter-box { display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; }
 .time-unit { background: rgba(255, 77, 121, 0.15); border: 1px solid rgba(255, 77, 121, 0.3); padding: 20px; border-radius: 16px; min-width: 100px; }
 .time-unit span { display: block; font-size: 2.5rem; font-weight: 700; color: #ffd700; }
 .footer-quote { margin-top: 55px; font-style: italic; color: #ffd700; font-size: 1.2rem; }
 
+/* --- NEW INTERACTIVE SECRET SURPRISE STYLING ENGINE --- */
+.secret-gift-section {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+    width: 100%;
+}
+
+#secret-gift-wrapper {
+    width: 100%;
+    max-width: 650px;
+    border-radius: 24px;
+    padding: 40px;
+    text-align: center;
+    transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.gift-sealed {
+    background: rgba(255, 215, 0, 0.03);
+    border: 2px dashed rgba(255, 215, 0, 0.3);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+}
+
+.gift-opened {
+    background: rgba(15, 8, 24, 0.85);
+    border: 2px solid rgba(255, 77, 121, 0.4);
+    box-shadow: 0 25px 60px rgba(255, 77, 121, 0.2);
+    backdrop-filter: blur(10px);
+}
+
+#gift-mystery-cover h3 {
+    font-size: 1.3rem;
+    color: #ffd700;
+    margin-bottom: 25px;
+    letter-spacing: 1px;
+}
+
+.mystery-box-icon {
+    font-size: 4.5rem;
+    margin-bottom: 15px;
+    animation: float 2.5s ease-in-out infinite alternate;
+}
+
+.gift-content-hidden {
+    display: none !important;
+    opacity: 0;
+}
+
+/* Custom CSS 3D Birthday Cake styling inside surprise module */
+.surprise-cake-container {
+    width: 100%;
+    height: 160px;
+    perspective: 800px;
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.gift-cake-3d {
+    width: 120px;
+    height: 100px;
+    position: relative;
+    transform-style: preserve-3d;
+    transform: rotateX(-15deg) rotateY(0deg);
+    animation: spinCake 7s linear infinite;
+}
+
+.g-cake-tier {
+    position: absolute;
+    border-radius: 50%;
+    background: linear-gradient(to bottom, #ffffff, #ffd700);
+    box-shadow: inset 0 3px 10px rgba(255,255,255,0.8), 0 8px 16px rgba(0,0,0,0.4);
+}
+
+.tier-g-base { width: 120px; height: 60px; bottom: 0; left: 0; }
+.tier-g-top  { width: 80px;  height: 45px; bottom: 35px; left: 20px; background: linear-gradient(to bottom, #ff3366, #ff758c); }
+.g-candle    { position: absolute; width: 6px; height: 30px; background: #ffd700; bottom: 75px; left: 57px; border-radius: 3px; box-shadow: 0 0 8px #ffd700; }
+.g-candle::before { content: '🔥'; position: absolute; top: -16px; left: -5px; font-size: 0.8rem; animation: heartbeat 0.6s infinite alternate; }
+
+.princess-wish-title {
+    font-size: 2.2rem;
+    color: #ff4d79;
+    text-shadow: 0 0 20px rgba(255,77,121,0.5);
+    margin-bottom: 12px;
+}
+
+.princess-wish-sub {
+    color: #ffb3c6;
+    font-size: 1.1rem;
+    font-style: italic;
+}
+
+/* --- Promises Section --- */
+.promises-section { flex-direction: column; justify-content: center; padding: 100px 8%; background: linear-gradient(to bottom, transparent, #090310); width: 100%; }
+.promises-title { font-size: 2.8rem; color: #ff4d79; text-shadow: 0 0 15px rgba(255, 77, 121, 0.5); margin-bottom: 60px; text-align: center; }
+.promises-container { display: flex; width: 100%; max-width: 1100px; gap: 50px; align-items: center; justify-content: space-between; }
+.promises-list { display: flex; flex-direction: column; gap: 30px; flex: 1; }
+.promise-card { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 77, 121, 0.2); padding: 30px; border-radius: 20px; backdrop-filter: blur(10px); box-shadow: 0 15px 35px rgba(0,0,0,0.3); transition: transform 0.3s; }
+.promise-card:hover { transform: translateY(-5px); border-color: #ff4d79; }
+.promise-card h3 { color: #ffd700; margin-bottom: 12px; font-size: 1.4rem; }
+.promise-card p { color: #ddd; line-height: 1.7; font-size: 1.05rem; }
+
+/* --- Pure CSS 3D Ring Box Geometric Faces --- */
+.ring-box-3d-wrapper { width: 250px; height: 250px; perspective: 1000px; display: flex; flex-direction: column; justify-content: center; align-items: center; position: relative; }
+.ring-box-3d { width: 120px; height: 100px; position: relative; transform-style: preserve-3d; transform: rotateX(-25deg) rotateY(35deg); }
+.box-face { position: absolute; background: linear-gradient(135deg, #8b0022, #b3002d); border: 1px solid rgba(255,255,255,0.1); box-shadow: inset 0 0 15px rgba(0,0,0,0.5); }
+.box-bottom { width: 120px; height: 120px; transform: rotateX(90deg) translateZ(50px); background: #590016; }
+.box-front  { width: 120px; height: 60px;  transform: translateZ(60px); top: 40px; }
+.box-back   { width: 120px; height: 60px;  transform: rotateY(180deg) translateZ(60px); top: 40px; }
+.box-left   { width: 120px; height: 60px;  transform: rotateY(-90deg) translateZ(60px); top: 40px; }
+.box-right  { width: 120px; height: 60px;  transform: rotateY(90deg) translateZ(60px); top: 40px; }
+.ring-box-lid { position: absolute; width: 120px; height: 120px; top: 40px; transform-style: preserve-3d; transform-origin: top center; transform: rotateX(-110deg) translateY(-120px); transition: transform 0.5s ease-out; }
+.lid-top { width: 120px; height: 120px; background: #b3002d; transform: rotateX(90deg) translateZ(0px); }
+.magic-ring { position: absolute; font-size: 3rem; left: 36px; top: 10px; transform: translateZ(0px); animation: ringFloat 2.5s ease-in-out infinite alternate; text-shadow: 0 0 20px rgba(255,215,0,0.8); }
+
+.scroll-fade-element { opacity: 0; transform: translateY(60px); transition: all 1s cubic-bezier(0.25, 1, 0.5, 1); }
+.scroll-fade-element.revealed { opacity: 1; transform: translateY(0); }
+
 /* --- Animations Keyframes --- */
 @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
 @keyframes heartbeat { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.15); } }
 @keyframes glow { from { text-shadow: 0 0 10px rgba(255,77,121,0.4); } to { text-shadow: 0 0 35px rgba(255,77,121,0.8), 0 0 15px #ffd700; } }
 @keyframes spinHeart { 0% { transform: rotateX(-20deg) rotateY(0deg); } 100% { transform: rotateX(-20deg) rotateY(360deg); } }
-@keyframes scrollTrack { 0% { transform: translateX(0); } 100% { transform: translateX(calc(-240px * 6)); } }
+@keyframes spinCake { 0% { transform: rotateX(-15deg) rotateY(0deg); } 100% { transform: rotateX(-15deg) rotateY(360deg); } }
+@keyframes ringFloat { 0% { transform: translateY(0) rotateY(0deg); } 100% { transform: translateY(-8px) rotateY(20deg); } }
+@keyframes scrollTrack { 0% { transform: translateX(0); } 100% { transform: translateX(calc(-160px * var(--img-count, 6))); } }
 
-/* --- MOBILE RESPONSIVE MEDIA BREAKPOINTS --- */
 @media (max-width: 768px) {
     section { padding: 60px 5%; }
     .cake-container { width: 70px; height: 70px; top: 40%; right: 4%; }
@@ -205,11 +306,16 @@ section { min-height: 100vh; display: flex; align-items: center; position: relat
     .glow-text { font-size: 2.2rem; }
     .bday-date { font-size: 1.5rem; letter-spacing: 3px; }
     .section-title, .gallery-title { font-size: 1.8rem; margin-bottom: 25px; }
-    .story-card { padding: 25px; }
-    .gallery-grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 15px; }
-    .photo-frame { padding: 8px 8px 25px 8px; }
-    .photo-frame img { height: 160px; }
-    .time-unit { min-width: 75px; padding: 12px; }
-    .time-unit span { font-size: 1.6rem; }
+    .slider-card { width: 120px; height: 165px; }
+    @keyframes scrollTrack { 0% { transform: translateX(0); } 100% { transform: translateX(calc(-120px * var(--img-count, 6))); } }
+    .video-grid { grid-template-columns: 1fr; gap: 20px; }
+    .promises-title { font-size: 2rem; }
+    .promises-container { flex-direction: column; gap: 40px; }
+    .ring-box-3d-wrapper { order: -1; width: 100%; height: 180px; }
+    .ring-box-3d { transform: scale(0.85) rotateX(-25deg) rotateY(35deg); }
+    .proposal-heading { font-size: 1.3rem; }
+    .yes-btn { padding: 12px 30px; font-size: 1.1rem; }
     #music-toggle-btn { bottom: 15px; right: 15px; padding: 10px 16px; font-size: 0.85rem; }
+    .princess-wish-title { font-size: 1.6rem; }
+    .princess-wish-sub { font-size: 0.95rem; }
 }
