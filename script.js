@@ -2,368 +2,20 @@
 // 🌟 DYNAMIC LOCAL IMAGES REGISTRATION SYSTEM 🌟
 // ==========================================
 const userUploadedImages = [
-    'img1.heic',
-    'img2.heic',
-    'img3.heic',
-    'img4.heic',
-    'img5.heic',
-    'img6.heic',
-    'img7.heic',
-    'img8.heic',
-    'img9.heic',
-    'img10.heic',
-    'img11.heic',
-    'img12.heic',
-    'img13.heic',
-    'img14.heic',
-    'img15.heic',
-    'img16.heic',
-    'img17.heic',
-    'img18.heic',
-    'img19.heic',
-    'img20.heic',
-    'img21.heic',
-    'img22.heic',
-    'img23.heic',
-    'img24.heic',
-    'img25.heic',
-    'img26.heic',
-    'img27.heic',
-    'img28.heic',
-    'img29.heic',
-    'img30.heic',
-    'img31.heic',
-    'img32.heic',
-    'img33.heic',
-    'img34.heic',
-    'img35.heic',
-    'img36.heic',
-    'img37.heic',
-    'img38.heic',
-    'img39.heic',
-    'img40.heic',
-    'img41.heic',
-    'img42.heic',
-    'img43.heic',
-    'img44.heic',
-    'img45.heic',
-    'img46.heic',
-    'img47.heic',
-    'img48.heic',
-    'img49.heic',
-    'img50.heic',
-    'img51.heic',
-    'img52.heic',
-    'img53.heic',
-    'img54.heic',
-    'img55.heic',
-    'img56.heic',
-    'img57.heic',
-    'img58.heic',
-    'img59.heic',
-    'img60.heic',
-    'img61.heic',
-    'img62.heic',
-    'img63.heic',
-    'img64.heic',
-    'img65.heic',
-    'img66.heic',
-    'img67.heic',
-    'img68.heic',
-    'img69.heic',
-    'img70.heic',
-    'img71.heic',
-    'img72.heic',
-    'img73.heic',
-    'img74.heic',
-    'img75.heic',
-    'img76.heic',
-    'img77.heic',
-    'img78.heic',
-    'img79.heic',
-    'img80.heic',
-    'img81.heic',
-    'img82.heic',
-    'img83.heic',
-    'img84.heic',
-    'img85.heic',
-    'img86.heic',
-    'img87.heic',
-    'img88.heic',
-    'img89.heic',
-    'img90.heic',
-    'img91.heic',
-    'img92.heic',
-    'img93.heic',
-    'img94.heic',
-    'img95.heic',
-    'img96.heic',
-    'img97.heic',
-    'img98.heic',
-    'img99.heic',
-    'img100.heic',
-    'img101.heic',
-    'img102.heic',
-    'img103.heic',
-    'img104.heic',
-    'img105.heic',
-    'img106.heic',
-    'img107.heic',
-    'img108.heic',
-    'img109.heic',
-    'img110.heic',
-    'img111.heic',
-    'img112.heic',
-    'img113.heic',
-    'img114.heic',
-    'img115.heic',
-    'img116.heic',
-    'img117.heic',
-    'img118.heic',
-    'img119.heic',
-    'img120.heic',
-    'img121.heic',
-    'img122.heic',
-    'img123.heic',
-    'img124.heic',
-    'img125.heic',
-    'img126.heic',
-    'img127.heic',
-    'img128.heic',
-    'img129.heic',
-    'img130.heic',
-    'img131.heic',
-    'img132.heic',
-    'img133.heic',
-    'img134.heic',
-    'img135.heic',
-    'img136.heic',
-    'img137.heic',
-    'img138.heic',
-    'img139.heic',
-    'img140.heic',
-    'img141.heic',
-    'img142.heic',
-    'img143.heic',
-    'img144.heic',
-    'img145.heic',
-    'img146.heic',
-    'img147.heic',
-    'img148.heic',
-    'img149.heic',
-    'img150.heic',
-    'img151.heic',
-    'img152.heic',
-    'img153.heic',
-    'img154.heic',
-    'img155.heic',
-    'img156.heic',
-    'img157.heic',
-    'img158.heic',
-    'img159.heic',
-    'img160.heic',
-    'img161.heic',
-    'img162.heic',
-    'img163.heic',
-    'img164.heic',
-    'img165.heic',
-    'img166.heic',
-    'img167.heic',
-    'img168.heic',
-    'img169.heic',
-    'img170.heic',
-    'img171.heic',
-    'img172.heic',
-    'img173.heic',
-    'img174.heic',
-    'img175.heic',
-    'img176.heic',
-    'img177.heic',
-    'img178.heic',
-    'img179.heic',
-    'img180.heic',
-    'img181.heic',
-    'img182.heic',
-    'img183.heic',
-    'img184.heic',
-    'img185.heic',
-    'img186.heic',
-    'img187.heic',
-    'img188.heic',
-    'img189.heic',
-    'img190.heic',
-    'img191.heic',
-    'img192.heic',
-    'img193.heic',
-    'img194.heic',
-    'img195.heic',
-    'img196.heic',
-    'img197.heic',
-    'img198.heic',
-    'img199.heic',
-    'img200.heic',
-    'img201.heic',
-    'img202.heic',
-    'img203.heic',
-    'img204.heic',
-    'img205.heic',
-    'img206.heic',
-    'img207.heic',
-    'img208.heic',
-    'img209.heic',
-    'img210.heic',
-    'img211.heic',
-    'img212.heic',
-    'img213.heic',
-    'img214.heic',
-    'img215.heic',
-    'img216.heic',
-    'img217.heic',
-    'img218.heic',
-    'img219.heic',
-    'img220.heic',
-    'img221.heic',
-    'img222.heic',
-    'img223.heic',
-    'img224.heic',
-    'img225.heic',
-    'img226.heic',
-    'img227.heic',
-    'img228.heic',
-    'img229.heic',
-    'img230.heic',
-    'img231.heic',
-    'img232.heic',
-    'img233.heic',
-    'img234.heic',
-    'img235.heic',
-    'img236.heic',
-    'img237.heic',
-    'img238.heic',
-    'img239.heic',
-    'img240.heic',
-    'img241.heic',
-    'img242.heic',
-    'img243.heic',
-    'img244.heic',
-    'img245.heic',
-    'img246.heic',
-    'img247.heic',
-    'img248.heic',
-    'img249.heic',
-    'img250.heic',
-    'img251.heic',
-    'img252.heic',
-    'img253.heic',
-    'img254.heic',
-    'img255.heic',
-    'img256.heic',
-    'img257.heic',
-    'img258.heic',
-    'img259.heic',
-    'img260.heic',
-    'img261.heic',
-    'img262.heic',
-    'img263.heic',
-    'img264.heic',
-    'img265.heic',
-    'img266.heic',
-    'img267.heic',
-    'img268.heic',
-    'img269.heic',
-    'img270.heic',
-    'img271.heic',
-    'img272.heic',
-    'img273.heic',
-    'img274.heic',
-    'img275.heic',
-    'img276.heic',
-    'img277.heic',
-    'img278.heic',
-    'img279.heic',
-    'img280.heic',
-    'img281.heic',
-    'img282.heic',
-    'img283.heic',
-    'img284.heic',
-    'img285.heic',
-    'img286.heic',
-    'img287.heic',
-    'img288.heic',
-    'img289.heic',
-    'img290.heic',
-    'img291.heic',
-    'img292.heic',
-    'img293.heic',
-    'img294.heic',
-    'img295.heic',
-    'img296.heic',
-    'img297.heic',
-    'img298.heic',
-    'img299.heic',
-    'img300.heic',
-    'img301.heic',
-    'img302.heic',
-    'img303.heic',
-    'img304.heic',
-    'img305.heic',
-    'img306.heic',
-    'img307.heic',
-    'img308.heic',
-    'img309.heic',
-    'img310.heic',
-    'img311.heic',
-    'img312.heic',
-    'img313.heic',
-    'img314.heic',
-    'img315.heic',
-    'img316.heic',
-    'img317.heic',
-    'img318.heic',
-    'img319.heic',
-    'img320.heic',
-    'img321.heic',
-    'img322.heic',
-    'img323.heic',
-    'img324.heic',
-    'img325.heic',
-    'img326.heic',
-    'img327.heic',
-    'img328.heic',
-    'img329.heic',
-    'img330.heic',
-    'img331.heic',
-    'img332.heic',
-    'img333.heic',
-    'img334.heic',
-    'img335.heic',
-    'img336.heic',
-    'img337.heic',
-    'img338.heic',
-    'img339.heic',
-    'img340.heic',
-    'img341.heic',
-    'img342.heic',
-    'img343.heic',
-    'img344.heic',
-    'img345.heic',
-    'img346.heic',
-    'img347.heic',
-    'img348.heic',
-    'img349.heic',
-    'img350.heic',
-    'img351.heic',
-    'img352.heic',
-    'img353.heic',
-    'img354.heic',
-    'img355.heic',
-    'img356.heic',
-    'img357.heic',
-    'img358.heic',
-    'img359.heic',
-    'img360.jpg',
-    'img361.jpg',
-    'img362.jpg'
+    'img1.jpg',
+    'img2.jpg',
+    'img3.jpg',
+    'img4.jpg',
+    'img5.jpg',
+    'img6.jpg',
+    'img7.jpg',
+    'img8.jpg',
+    'img9.jpg',
+    'img10.jpg',
+    'img11.jpg',
+    'img12.jpg',
+    'img13.jpg',
+    'img14.jpg'
 ];
 
 // ==========================================
@@ -735,7 +387,6 @@ function fadeAudioChannel(audioElement, direction, duration, callback) {
 }
 
 // --- Smooth 3D Objects Scroll Transform Mechanics ---
-// --- Smooth 3D Objects Scroll Transform Mechanics ---
 function initAdvancedScrollFadeMechanics() {
     const fadeElements = document.querySelectorAll('.scroll-fade-element');
     const heartContainer = document.getElementById('scrolling-cake');
@@ -743,46 +394,55 @@ function initAdvancedScrollFadeMechanics() {
     const ringBoxLid = document.getElementById('ring-box-lid');
     
     const triggerCoreScrollActions = () => {
-        // ... (fadeElements කොටස එලෙසම තබන්න) ...
         fadeElements.forEach(el => {
             const rect = el.getBoundingClientRect();
             const isVisible = rect.top < window.innerHeight - 50 && rect.bottom > 0;
-            if(isVisible) { el.classList.add('revealed'); }
+            if(isVisible) {
+                el.classList.add('revealed'); 
+            }
         });
 
-        // ගණනය කිරීම් සඳහා ස්ථාවර percent එකක් ලබා ගැනීම
         const scrollY = window.scrollY;
         const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
-        const percent = maxScroll > 0 ? Math.min(scrollY / maxScroll, 1) : 0; 
         
-        // 1. Heart Container Movement (දැන් වේගය percent එක මත පමණක් රඳා පවතී)
-        if(heartContainer) {
-            const isMobile = window.innerWidth < 768;
-            const horizontalFactor = isMobile ? 30 : 150; 
-            const verticalTravelDistance = isMobile ? 45 : 55;
-
-            const xShiftPosition = Math.sin(percent * Math.PI * 2) * horizontalFactor;
-            const yShiftPosition = 25 + (percent * verticalTravelDistance);
-
-            heartContainer.style.right = `calc(${isMobile ? 4 : 12}% - ${xShiftPosition}px)`;
-            heartContainer.style.top = `${yShiftPosition}%`;
-        }
-
-        // 2. Ring Box Movement
-        if(ringBoxContainer && ringBoxLid) {
-            // මෙහිදී scrollY වෙනුවට percent භාවිතා කරන්න
-            const targetLidAngle = -110 - (percent * 70);
-            ringBoxLid.style.transform = `rotateX(${targetLidAngle}deg) translateY(-120px)`;
-
-            const boxWaveX = Math.sin(percent * Math.PI) * 20;
-            const boxModel = ringBoxContainer.querySelector('.ring-box-3d');
+        if(maxScroll > 0) {
+            const percent = scrollY / maxScroll;
             
-            const overlay = document.getElementById('ring-popup-overlay');
-            const isOverlayHidden = overlay ? overlay.classList.contains('popup-overlay-hidden') : true;
+            if(heartContainer) {
+                const isMobile = window.innerWidth < 768;
+                const horizontalFactor = isMobile ? 30 : 150; 
+                const horizontalOffset = isMobile ? 4 : 12;
+                const verticalTravelDistance = isMobile ? 45 : 55;
 
-            if(boxModel && isOverlayHidden) {
-                // scrollY * 0.05 වෙනුවට percent එකට ගැලපෙන අගයක් යොදන්න (උදා: percent * 100)
-                boxModel.style.transform = `rotateX(-25deg) rotateY(${35 + (percent * 100)}deg) translateX(${boxWaveX}px)`;
+                const xShiftPosition = Math.sin(percent * Math.PI * 2) * horizontalFactor;
+                const yShiftPosition = 25 + (percent * verticalTravelDistance);
+
+                heartContainer.style.right = `calc(${horizontalOffset}% - ${xShiftPosition}px)`;
+                heartContainer.style.top = `${yShiftPosition}%`;
+            }
+
+            if(ringBoxContainer && ringBoxLid) {
+                const ringBoxSection = document.querySelector('.promises-section');
+                const boxRect = ringBoxSection.getBoundingClientRect();
+                
+                const sectionHeight = ringBoxSection.offsetHeight;
+                const entryPoint = window.innerHeight - boxRect.top;
+                
+                let boxProgress = entryPoint / (window.innerHeight + sectionHeight);
+                boxProgress = Math.max(0, Math.min(1, boxProgress));
+
+                const targetLidAngle = -110 - (boxProgress * 70);
+                ringBoxLid.style.transform = `rotateX(${targetLidAngle}deg) translateY(-120px)`;
+
+                const boxWaveX = Math.sin(boxProgress * Math.PI) * 20;
+                const boxModel = ringBoxContainer.querySelector('.ring-box-3d');
+                
+                const overlay = document.getElementById('ring-popup-overlay');
+                const isOverlayHidden = overlay ? overlay.classList.contains('popup-overlay-hidden') : true;
+
+                if(boxModel && isOverlayHidden) {
+                    boxModel.style.transform = `rotateX(-25deg) rotateY(${35 + (scrollY * 0.05)}deg) translateX(${boxWaveX}px)`;
+                }
             }
         }
     };
@@ -818,3 +478,5 @@ setInterval(() => {
 
     setTimeout(() => { particle.remove(); }, 7100);
 }, 500);
+
+
